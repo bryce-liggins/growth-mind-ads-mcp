@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "growth-mind-ads-mcp"
+version = "0.1.0"
+description = "Local Google Ads MCP management bridge with exact-batch review workflow"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{name = "Bryce Liggins"}]
+dependencies = ["fastmcp>=2.14,<3", "google-auth>=2.40,<3", "requests>=2.32,<3"]
+
+[project.scripts]
+growth-mind-ads-mcp = "growth_mind_ads_mcp.server:main"
+growth-mind-ads-doctor = "growth_mind_ads_mcp.doctor:main"
+
+[project.urls]
+Repository = "https://github.com/bryce-liggins/growth-mind-ads-mcp"
+Issues = "https://github.com/bryce-liggins/growth-mind-ads-mcp/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/growth_mind_ads_mcp"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "tests", "docs", "examples", "scripts", "README.md", "LICENSE", "SECURITY.md", "CONTRIBUTING.md", "CHANGELOG.md", "pyproject.toml", "uv.lock", ".env.example", ".gitignore"]
