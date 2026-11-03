@@ -1,5 +1,23 @@
 # Release validation
 
+## 0.2.0 — November 3, 2026
+
+- CPython 3.12.13 on macOS; frozen lock install and source/wheel builds passed.
+- **53 unit tests passed**. Google mutations and authentication refreshes in the tests are mocked. Added cases cover local/API failures, invalid tickets, timeouts, audit write failure, secret-safe errors, budget cap enforcement, removal policy, auth failure/expiry classification and both negative examples.
+- Real management-server stdio discovery and local capabilities passed without Google authentication.
+- Upstream reporting commit `7452a9d49e3d350403f2610cd7125c60f6d05264` installed separately. With the explicit YAML, real stdio discovery returned exactly the three reporting tools. Tested resolved Google Ads 35.0.0 / FastMCP 4.1.6.
+- Claude Code 2.1.224 registered **both servers** with the documented local-scope `uv run --project ... --frozen --env-file ...` commands in an isolated temporary configuration. Both `claude mcp get` calls reported Connected. Initial restricted runs could not use the default cache; supplying a writable temporary uv cache resolved that environment-specific failure. The operator's real Claude configuration was not edited.
+- The two QUERIES.md shapes each returned one row through the existing connected reporting service after metadata discovery and authorized-account routing. No Ads validation/mutation was performed and no account rows are included in this repository.
+- Public-file checks and Git diff whitespace checks passed. Gitleaks 8.30.1 directory scan reported no leaks.
+
+### Precisely what is not verified
+
+No live management apply, fresh OAuth sign-in, real human-permission dialog, hosted deployment, native Windows acceptance, paid headless model invocation, scheduled execution or notification delivery was performed. The auth-health code was unit-tested with mocked refresh success/failures; no token-expiry date was invented or changed. Each installation must verify actual host prompts, access and scheduled run/notification delivery.
+
+The live query check used an existing connected reporting service, not a fresh login through the isolated upstream checkout. Negative examples passed local preparation; they still require Google validate-only and exact owner approval on real resources. Configured budget limits concern budget amounts, not an account spending guarantee. A disk failure after a remote request can still leave outcome uncertain.
+
+# Initial 0.1.0 validation (historical)
+
 Release 0.1.0, November 3, 2026.
 
 ## Recorded checks

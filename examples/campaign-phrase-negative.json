@@ -1,0 +1,8 @@
+{
+  "customer_id": "1234567890",
+  "operations": [{"campaignCriterionOperation": {"create": {
+    "campaign": "customers/1234567890/campaigns/123",
+    "negative": true,
+    "keyword": {"text": "example competitor", "matchType": "PHRASE"}
+  }}}]
+}

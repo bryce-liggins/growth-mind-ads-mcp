@@ -2,7 +2,7 @@
 
 Manage supported Google Ads changes from an AI agent through a local MCP server. Built from Growth Mind's operating workflow: read the account, prepare a specific change, validate it, get the account owner's approval, apply the unchanged batch, and read the result back.
 
-**This is the management bridge, not a complete marketing platform.** Pair it with a reporting connector such as [Google's Google Ads MCP](https://github.com/googleads/google-ads-mcp). Your brand workbench supplies the customer, offer, voice and goals. Separate tools provide your website, CRM, analytics and keyword data.
+**This is the management bridge, not a complete marketing platform.** Pair it with a [reporting-only configuration](docs/REPORTING.md) of a connector such as [Google's Google Ads MCP](https://github.com/googleads/google-ads-mcp). Your brand workbench supplies the customer, offer, voice and goals. Separate tools provide your website, CRM, analytics and keyword data.
 
 ## Start here
 
@@ -36,7 +36,7 @@ Then register the server in your chosen agent client. The server speaks **stdio*
 
 ## Supported operations
 
-Allowlisted create, update and remove operations cover budgets, campaigns, ad groups, ads, criteria, assets/associations and shared negative sets. New campaigns, ad groups, ads and positive ad-group criteria are forced paused. Negatives and some other resources can affect live delivery immediately after application.
+Supported operation families cover budgets, campaigns, ad groups, ads, criteria, assets/associations and shared negative sets. Budget edits require an owner-configured daily amount cap per budget. Removals are disabled unless the owner explicitly allows their operation type. New campaigns, ad groups, ads and positive ad-group criteria are forced paused. Negatives and some other resources can affect live delivery immediately after application.
 
 Conversion actions are deliberately narrow: create a secondary completed-booking website action, or change an existing action's primary/secondary role. No offline customer-data uploads, conversion-action removal, billing or account-user management. [Full operation reference](docs/OPERATIONS.md).
 
@@ -44,7 +44,13 @@ Conversion actions are deliberately narrow: create a secondary completed-booking
 
 Validation produces a single-use, eight-hour ticket bound to the normalized customer and payload. Application consumes that ticket and validates with Google again before writing.
 
-**The server cannot prove that a human approved. An agent with both tools can request and consume a ticket.** Configure your agent/host to require the account owner's approval before either apply tool, and don't give untrusted agents unrestricted credentials. Paused-create defaults do not protect against every live effect. See [SECURITY.md](SECURITY.md).
+**The server cannot prove that a human approved. An agent with both tools can request and consume a ticket.** Use the [concrete client permission recipe](docs/CLIENTS.md) to require the account owner's approval before either apply tool, and don't give untrusted agents unrestricted credentials. Paused-create defaults do not protect against every live effect. See [SECURITY.md](SECURITY.md).
+
+## Reports, recurring reviews and maintenance
+
+Use the [starter queries](docs/QUERIES.md), [negative-keyword examples](docs/OPERATIONS.md#campaign-level-phrase-negative) and [twice-daily schedule recipes](docs/SCHEDULING.md). Scheduled runs are reporting-only and save proposals; the human session validates again before approval. Create your own Google app and complete [the production authorization checkpoint](docs/GOOGLE_SETUP.md#production-authorization-checkpoint-avoid-weekly-sign-in-failures). The included authentication health command can signal failures and known expiry warnings to your scheduler.
+
+The bridge uses Google Ads API v25, scheduled to sunset **August 2027** (exact day not yet announced). [Maintenance instructions](docs/INSTALLATION.md#version-maintenance-and-policy-changes).
 
 ## What is verified
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.0 — 2026-11-03
+
+- Add sanitized attempt/failure auditing and fail closed when the initial audit record cannot be written.
+- Require owner-configured per-budget daily cap; make removal types opt-in (breaking defaults).
+- Add authentication health command; no fabricated fixed refresh-token lifetime.
+- Add verified reporting-only configuration, both Claude registrations, human ask rules and isolated scheduling recipes.
+- Add live-read-tested query shapes, fictional negative examples, own-app setup and v25 sunset month.
+
+
 ## 0.1.0 — 2026-11-03
 
 Initial public package derived from Growth Mind's local Google Ads management bridge.

@@ -1,0 +1,18 @@
+{
+  "customer_id": "1234567890",
+  "operations": [
+    {"sharedSetOperation": {"create": {
+      "resourceName": "customers/1234567890/sharedSets/-1",
+      "name": "Example competitor exclusions",
+      "type": "NEGATIVE_KEYWORDS"
+    }}},
+    {"sharedCriterionOperation": {"create": {
+      "sharedSet": "customers/1234567890/sharedSets/-1",
+      "keyword": {"text": "example competitor", "matchType": "PHRASE"}
+    }}},
+    {"campaignSharedSetOperation": {"create": {
+      "campaign": "customers/1234567890/campaigns/123",
+      "sharedSet": "customers/1234567890/sharedSets/-1"
+    }}}
+  ]
+}

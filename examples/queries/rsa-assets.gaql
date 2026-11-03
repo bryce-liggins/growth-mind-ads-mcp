@@ -1,0 +1,12 @@
+SELECT ad_group_ad_asset_view.ad_group_ad,
+       ad_group_ad_asset_view.asset,
+       asset.text_asset.text,
+       ad_group_ad_asset_view.field_type,
+       metrics.impressions,
+       metrics.clicks,
+       metrics.cost_micros,
+       metrics.conversions
+FROM ad_group_ad_asset_view
+WHERE segments.date DURING LAST_30_DAYS
+  AND ad_group_ad.ad.type = 'RESPONSIVE_SEARCH_AD'
+LIMIT 1

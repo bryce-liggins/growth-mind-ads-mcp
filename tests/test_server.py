@@ -1,5 +1,7 @@
 import importlib.util
 import sys
+import os
+import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -9,6 +11,21 @@ from growth_mind_ads_mcp import server
 
 
 CUSTOMER = "1234567890"  # Fictional fixture; never call Google with it.
+
+
+def setUpModule():
+    global audit_tmp, audit_patches
+    audit_tmp = tempfile.TemporaryDirectory()
+    audit_patches = [patch.object(server, "AUDIT_DIR", Path(audit_tmp.name)),
+                     patch.object(server, "AUDIT_FILE", Path(audit_tmp.name) / "audit.jsonl")]
+    for item in audit_patches:
+        item.start()
+
+
+def tearDownModule():
+    for item in audit_patches:
+        item.stop()
+    audit_tmp.cleanup()
 
 
 class PreparationTests(unittest.TestCase):
@@ -73,6 +90,7 @@ class PreparationTests(unittest.TestCase):
         summary = server._operation_summary(prepared, forced)
         self.assertEqual(summary["status_updates"], {"ENABLED": 1})
 
+    @patch.dict(os.environ, {"GROWTH_MIND_ADS_ALLOWED_REMOVE_TYPES": "campaignCriterionOperation"})
     def test_remove_is_allowed_and_summarized(self):
         operations = [{
             "campaignCriterionOperation": {
@@ -316,7 +334,7 @@ class ApprovalTests(unittest.TestCase):
             [call.kwargs["validate_only"] for call in mutate.call_args_list],
             [True, False],
         )
-        audit.assert_called_once()
+        self.assertEqual(audit.call_count, 2)
 
     @patch.object(server, "_mutate")
     def test_changed_payload_rejects_prior_phrase_before_api_call(self, mutate):

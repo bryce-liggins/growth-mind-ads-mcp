@@ -4,12 +4,12 @@ This is a local, single-operator stdio server. Do not expose it as a public HTTP
 
 ## What the code checks
 
-- Only allowlisted operation types/actions are accepted.
+- Only allowlisted operation types/actions are accepted. Budget edits require a configured per-budget daily cap; removals are disabled unless the operator explicitly allows their exact operation type.
 - Resource strings beginning with `customers/` must match the selected customer.
 - New campaigns, ad groups, ads and positive ad-group criteria are forced paused.
 - A normalized customer/payload ticket is required, expires after eight hours and can be consumed once.
 - Google validateOnly runs before ticket issuance and immediately before a live apply.
-- Successful validation/application outcomes are recorded locally; approval ticket text is excluded from the audit record.
+- Attempted, successful and failed validation/application outcomes are recorded locally; approval ticket text is excluded from the audit record.
 
 ## What it does not guarantee
 
@@ -19,7 +19,7 @@ Credentials determine which accounts the process can access; the server does not
 
 Google validation checks API validity, not business wisdom, budget affordability or statistical significance. Negative keywords, updates, removals, assets and shared resources can affect live campaigns. Paused defaults cover only the documented create types.
 
-Audit writing is not transactional with Google. A remote write may succeed and then local logging fail. Network timeouts can also leave outcome uncertain. Read state before retrying. No automatic rollback or idempotency key is supplied. Failed requests are not guaranteed to appear in the audit file.
+Audit writing is not transactional with Google. A remote write may succeed and then local logging fail. Network timeouts can also leave outcome uncertain. Read state before retrying. No automatic rollback or idempotency key is supplied. Failures are logged with sanitized error classes. An unavailable audit file blocks API work before it begins; disk failure after a remote call can still prevent its failure/success receipt from being saved.
 
 ## Credentials and data
 
@@ -35,3 +35,7 @@ Do not open a public issue containing secrets, client data or an exploitable con
 
 If a real credential leaks, revoke/rotate it and address exposed files/history/copies. Deleting the latest file does not undo disclosure. [GitHub guidance](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository).
 
+
+## Concrete host controls
+
+Follow [CLIENTS.md](docs/CLIENTS.md) for Claude ask rules covering both apply tools, and [SCHEDULING.md](docs/SCHEDULING.md) for reporting-only scheduled runs with no management bridge. These rules do not sandbox arbitrary shell code that has access to write credentials.

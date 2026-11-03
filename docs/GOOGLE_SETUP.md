@@ -57,3 +57,27 @@ Follow [OPERATIONS.md](OPERATIONS.md). Google validate-only calls do not apply t
 
 Some Google page summaries still describe the old token requirement; the migration notice and current request-header guidance are the basis for this release. Record actual access results instead of assuming a configured project is approved.
 
+## Production authorization checkpoint: avoid weekly sign-in failures
+
+Create **your own** Cloud project and OAuth app. “Growth Mind Ads Operations” is Growth Mind's app name, not an app readers must connect to or copy.
+
+Before enabling recurring reviews, inspect Google Auth Platform → Audience. For an External app using Ads scopes, finish the applicable requirements and publish **In production**, then authorize again and verify a refresh. An eligible Workspace organization-only app can use **Internal**; having a Workspace address alone does not make an external audience internal. Record the actual audience and publishing status.
+
+External apps left in Testing issue refresh tokens that expire after seven days for this scope. Production removes that Testing restriction; it does **not** set a fixed 180-day lifetime. Six months of non-use is one revocation condition, not a guaranteed six-month validity period. User revocation, administrator policy and other conditions can invalidate access sooner. Do not assume an already issued Testing token is extended after publication. [Google's refresh-token lifecycle](https://developers.google.com/identity/protocols/oauth2#expiration).
+
+Production publishing and brand verification are distinct from scope/access verification. Complete the requirements applicable to your audience; this checklist does not promise Google approval.
+
+## Authentication health and alerts
+
+After installation, run this with your private reporting credentials:
+
+```sh
+uv run --frozen --env-file /absolute/path/to/private/reporting.env \
+  growth-mind-ads-auth-health
+```
+
+This refreshes authentication against Google; it does not query or modify Ads. It returns sanitized JSON and a nonzero exit on a warning/failure. `invalid_grant` becomes `reauthorization_required`; network problems become `connection_failed`. A successful refresh alone does not prove Ads account permissions: follow it with the tiny report.
+
+Only if Google or your administrator supplies an actual refresh-authorization expiry, pass `--known-refresh-expiry` with its ISO timestamp including timezone. The checker warns within seven days. Never substitute the short-lived **access-token** expiry or an invented 180-day date. When refresh expiry is unknown, advance expiry prediction is unavailable; the next scheduled health check detects failure instead.
+
+The command emits a notification signal; it does not send email or install a background job. The [schedule recipe](SCHEDULING.md) tells the host to surface changed failures, known-expiry warnings, and recovery in its task inbox. Verify host notifications during setup. An optional 180-day access review is an operator maintenance choice, not an OAuth lifetime change.

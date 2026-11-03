@@ -1,0 +1,19 @@
+{
+  "customer_id": "1234567890",
+  "fields": [
+    "ad_group_ad_asset_view.ad_group_ad",
+    "ad_group_ad_asset_view.asset",
+    "asset.text_asset.text",
+    "ad_group_ad_asset_view.field_type",
+    "metrics.impressions",
+    "metrics.clicks",
+    "metrics.cost_micros",
+    "metrics.conversions"
+  ],
+  "resource": "ad_group_ad_asset_view",
+  "conditions": [
+    "segments.date DURING LAST_30_DAYS",
+    "ad_group_ad.ad.type = 'RESPONSIVE_SEARCH_AD'"
+  ],
+  "limit": 1
+}

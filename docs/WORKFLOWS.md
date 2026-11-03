@@ -50,3 +50,10 @@ Only create a schedule on request. Record provider/job ID, host, trigger, timezo
 
 DataForSEO supplies market/language-specific keyword estimates; Search Console supplies organic property/query/page performance; PostHog supplies website events; a CRM supplies downstream outcomes. Each needs its own access, schema, privacy review and acceptance. They are not bundled in this repository.
 
+## Executable starting points
+
+- [Two verified report query shapes](QUERIES.md), including JSON MCP arguments and weighted RSA aggregation guidance.
+- [Campaign phrase negative and shared-negative-list examples](OPERATIONS.md#campaign-level-phrase-negative).
+- [Twice-daily schedule recipes](SCHEDULING.md), with reporting-only isolation, health alerts and durable review queues.
+
+Scheduled runs save proposals, not tickets. Revalidate in the human's interactive session before approval/application.

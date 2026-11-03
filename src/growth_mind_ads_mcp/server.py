@@ -11,6 +11,7 @@ import secrets
 import time
 from collections import Counter
 from datetime import datetime, timezone
+from functools import wraps
 from pathlib import Path
 from typing import Any
 from urllib.error import HTTPError
@@ -22,6 +23,8 @@ from google.auth.transport.requests import Request as AuthRequest
 
 
 API_VERSION = "v25"
+# Google's published sunset month, checked 2026-11-03; exact day not announced.
+API_SUNSET = "2027-08"
 API_ROOT = f"https://googleads.googleapis.com/{API_VERSION}"
 ADWORDS_SCOPE = "https://www.googleapis.com/auth/adwords"
 AUDIT_DIR = Path(os.environ.get("GROWTH_MIND_ADS_AUDIT_DIR", str(Path.home() / ".local" / "share" / "growth-mind-ads-mcp"))).expanduser()
@@ -104,7 +107,7 @@ mcp = FastMCP(
         "their explicit approval. Only then call apply_approved_mutation_batch with the unchanged "
         "payload and exact payload-bound approval phrase returned by validation. New campaigns, "
         "ad groups, ads, and positive ad-group criteria are forced to PAUSED. Negative criteria "
-        "may be created live. Successful validations and applications are audit logged."
+        "may be created live. Attempts, successes and failures are audit logged."
     ),
 )
 
@@ -203,6 +206,36 @@ def _force_safe_create_status(operation_type: str, create_payload: dict[str, Any
     return False
 
 
+def _check_operator_policy(operation_type: str, action: str, body: dict[str, Any]) -> None:
+    """Require deliberate local policy for budget edits and destructive removals."""
+    removals = {x.strip() for x in os.environ.get(
+        "GROWTH_MIND_ADS_ALLOWED_REMOVE_TYPES", "").split(",") if x.strip()}
+    if removals - (ALLOWED_OPERATION_TYPES - {"conversionActionOperation"}):
+        raise ValueError("Invalid removal policy; use exact supported operation types")
+    removes_by_status = action == "update" and body.get("update", {}).get("status") == "REMOVED"
+    if (action == "remove" or removes_by_status) and operation_type not in removals:
+        raise ValueError("Removal is disabled for this operation type by local policy")
+    if operation_type != "campaignBudgetOperation" or action == "remove":
+        return
+    cap = os.environ.get("GROWTH_MIND_ADS_MAX_BUDGET_MICROS", "").strip()
+    if not re.fullmatch(r"[1-9][0-9]*", cap):
+        raise ValueError("Budget changes require a positive GROWTH_MIND_ADS_MAX_BUDGET_MICROS policy")
+    payload = body[action]
+    # Only daily budgets are supported by this policy; reject alternate totals.
+    if "totalAmountMicros" in payload or payload.get("period", "DAILY") != "DAILY":
+        raise ValueError("Only daily amountMicros budgets are supported")
+    mask = body.get("updateMask", "")
+    if action == "update" and ("*" in mask or "total_amount_micros" in mask or "period" in mask):
+        raise ValueError("Budget mask cannot change period, total amount, or use a wildcard")
+    amount = payload.get("amountMicros")
+    if amount is None and action == "update" and "amount_micros" not in mask:
+        return
+    if isinstance(amount, bool) or not re.fullmatch(r"[1-9][0-9]*", str(amount)):
+        raise ValueError("Budget amountMicros must be a positive integer")
+    if int(amount) > int(cap):
+        raise ValueError("Budget exceeds the configured per-budget daily amount cap")
+
+
 def _prepare_for_customer(
     customer_id: str,
     operations: list[dict[str, Any]],
@@ -296,6 +329,7 @@ def _prepare_for_customer(
                 raise ValueError(f"Operation {index} remove must be a resource name")
 
         prepared_operation = {operation_type: clean_body}
+        _check_operator_policy(operation_type, action, clean_body)
         _assert_customer_owned_resource_names(
             prepared_operation, customer_id, f"operations[{index}]"
         )
@@ -339,6 +373,8 @@ def _operation_summary(
                 "customerNegativeCriterionOperation",
             } and payload.get("negative", False) and "keyword" in payload:
                 negative_keyword_creates += 1
+            elif operation_type == "sharedCriterionOperation" and "keyword" in payload:
+                negative_keyword_creates += 1
 
     return {
         "action_counts": dict(sorted(action_counts.items())),
@@ -357,18 +393,49 @@ def _audit(
     event: str, customer_id: str, operations: list[dict[str, Any]], result: Any
 ) -> None:
     AUDIT_DIR.mkdir(parents=True, exist_ok=True, mode=0o700)
+    try:
+        payload_hash = _payload_sha256(operations)
+    except (ValueError, TypeError):
+        payload_hash = None
     entry = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "event": event,
         "customer_id": customer_id,
-        "operation_count": len(operations),
-        "payload_sha256": _payload_sha256(operations),
+        "operation_count": len(operations) if isinstance(operations, list) else None,
+        "payload_sha256": payload_hash,
         "result": {key: value for key, value in result.items() if key != "approval_phrase"}
         if isinstance(result, dict) else result,
     }
     fd = os.open(AUDIT_FILE, os.O_WRONLY | os.O_APPEND | os.O_CREAT, 0o600)
     with os.fdopen(fd, "a", encoding="utf-8") as handle:
         handle.write(json.dumps(entry, separators=(",", ":")) + "\n")
+
+
+def _audited_attempt(event):
+    """Log failures without copying provider errors, credentials or ticket text."""
+    def decorate(function):
+        @wraps(function)
+        def wrapped(customer_id, operations, *args, **kwargs):
+            try:
+                customer = _normalize_customer_id(customer_id)
+            except ValueError:
+                customer = "invalid"
+            # Fail closed before any API work if the audit file is unavailable.
+            _audit(event + "_attempt", customer, operations, {"outcome": "started"})
+            try:
+                return function(customer_id, operations, *args, **kwargs)
+            except Exception as error:
+                try:
+                    _audit(event + "_failed", customer, operations, {
+                        "error_type": type(error).__name__,
+                        "outcome": "unconfirmed" if event == "apply_mutation" else "not_applied",
+                        "readback_required": event == "apply_mutation",
+                    })
+                except Exception:
+                    raise RuntimeError("Operation failed and failure audit could not be saved; reconcile account state before retrying") from None
+                raise
+        return wrapped
+    return decorate
 
 
 def _mutate(
@@ -407,6 +474,7 @@ def _mutate(
         raise RuntimeError(f"Google Ads API error {error.code}: {detail}") from error
 
 
+@_audited_attempt("validate_mutation")
 def _validate_batch(
     customer_id: str,
     operations: list[dict[str, Any]],
@@ -438,6 +506,7 @@ def _validate_batch(
     return summary
 
 
+@_audited_attempt("apply_mutation")
 def _apply_batch(
     customer_id: str,
     operations: list[dict[str, Any]],
@@ -469,11 +538,14 @@ def _apply_batch(
 
 @mcp.tool()
 def get_write_capabilities(customer_id: str) -> dict[str, Any]:
-    """Describe the bridge's management scope and non-bypassable approval workflow."""
+    """Describe supported operations, local policy and the host approval requirement."""
     customer = _normalize_customer_id(customer_id)
     return {
         "customer_id": customer,
         "api_version": API_VERSION,
+        "api_sunset_month": API_SUNSET,
+        "budget_policy": "Budget changes require GROWTH_MIND_ADS_MAX_BUDGET_MICROS; cap is per budget, not account spend",
+        "removal_policy": "Disabled unless exact type appears in GROWTH_MIND_ADS_ALLOWED_REMOVE_TYPES",
         "mode": "approval-gated-management",
         "allowed_operation_types": sorted(ALLOWED_OPERATION_TYPES),
         "allowed_actions": sorted(MUTATION_ACTIONS),

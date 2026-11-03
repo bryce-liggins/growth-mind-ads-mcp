@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "ask": [
+      "mcp__growth-mind-ads__apply_approved_mutation_batch",
+      "mcp__growth-mind-ads__create_paused_batch"
+    ]
+  }
+}

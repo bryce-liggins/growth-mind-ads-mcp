@@ -65,3 +65,10 @@ Remove the MCP registration from the client and stop its process. Removing a con
 
 Do not post raw credentials, approval phrases or account responses in public issues.
 
+## Version maintenance and policy changes
+
+This bridge pins Google Ads API **v25**, scheduled to sunset in **August 2027**. Google has not published an exact day in the checked table; dates can change. Plan migration before that month and recheck [Google's sunset schedule](https://developers.google.com/google-ads/api/docs/sunset-dates). Upgrade code, schemas, example queries and validation together; changing the URL alone is not acceptance.
+
+Version 0.2.0 changes budget/removal defaults. Set `GROWTH_MIND_ADS_MAX_BUDGET_MICROS` only to the owner's chosen per-budget daily cap. Leave `GROWTH_MIND_ADS_ALLOWED_REMOVE_TYPES` empty unless the owner permits specific removal types. See [policy details](OPERATIONS.md#budget-and-removal-policy-in-020). Existing 0.1.0 budget/removal workflows require a deliberate policy decision when upgrading.
+
+Use `growth-mind-ads-auth-health` for a real authentication refresh check; unlike the offline doctor, it contacts Google. It emits sanitized status for your scheduler and does not send notifications itself.

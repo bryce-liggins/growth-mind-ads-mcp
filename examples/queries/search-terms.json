@@ -1,0 +1,17 @@
+{
+  "customer_id": "1234567890",
+  "fields": [
+    "campaign.id",
+    "search_term_view.ad_group",
+    "search_term_view.search_term",
+    "metrics.impressions",
+    "metrics.clicks",
+    "metrics.cost_micros",
+    "metrics.conversions"
+  ],
+  "resource": "search_term_view",
+  "conditions": [
+    "segments.date DURING LAST_30_DAYS"
+  ],
+  "limit": 1
+}
