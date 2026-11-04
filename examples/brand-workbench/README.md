@@ -12,6 +12,18 @@ Copy this entire folder into your private business workspace before filling it i
 
 Start with the [build and maintenance guide](../../docs/BRAND_WORKBENCH.md). Reuse an existing workbench when it already covers these responsibilities; preserve its structure and link the mapping here instead of creating competing copies.
 
+## Guided setup
+
+Your agent should start by asking about existing brand guidelines, a workbench or other business materials. It reads what you share first, then asks permission to review your website if more evidence is needed. Without guidelines or website access, it can build from your answers. Follow the [guided interview](../../docs/BRAND_WORKBENCH.md#3-interview-one-question-at-a-time-and-build-as-you-go): one question at a time, wait for the answer, write the relevant files and continue from the remaining gaps.
+
+### Interview checkpoint
+
+| Topic | Known evidence / answer | Missing detail | Affected workflow | Next question / deferred status |
+| --- | --- | --- | --- | --- |
+| [topic] | [source or saved answer] | [specific gap] | [dependency] | [one next question] |
+
+Last completed topic: [topic/date]. Next unanswered question: [question]. Source permissions already given: [scope/date]. Resume here without repeating answered questions. Keep confirmed choices and their reasoning in decisions.md; unknown or deferred items remain visible.
+
 ## Workspace record
 
 - Canonical private location: [path]

@@ -1,6 +1,6 @@
 # Workflow recipes
 
-These are instructions for an agent with the appropriate connected tools, not scheduled jobs or integrations automatically installed by this package. Start with the [multi-file brand workbench](BRAND_WORKBENCH.md) and its task-specific [reading map](../examples/brand-workbench/README.md#read-only-what-the-job-needs). Save findings and proposed actions; retain human judgment.
+These are instructions for an agent with the appropriate connected tools, not scheduled jobs or integrations automatically installed by this package. Start with the [multi-file brand workbench](BRAND_WORKBENCH.md) and its task-specific [reading map](../examples/brand-workbench/README.md#read-only-what-the-job-needs). Save findings and proposed actions; retain human judgment. In interactive search-term, RSA and landing-page work, fill consequential gaps through one question at a time, using saved answers first and recording clarifications. In unattended reviews, queue missing decisions and hold dependent recommendations; do not initiate an interactive interview.
 
 ## Search-term mining
 

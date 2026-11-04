@@ -10,6 +10,8 @@ The server does not directly send data to an AI provider. The host may send tool
 
 ## Gather facts before drafting
 
+Use existing verified deployment records first. Guide the owner through missing facts one question at a time, wait for the answer and save it before continuing. Explain an unfamiliar choice briefly when needed. The list below is the agent's coverage checklist, not a form to send all at once. Do not request secret values or infer policy commitments from missing answers.
+
 - Operator/legal identity, application name, contact and controlled domain.
 - Internal tool or external users; who grants access and can revoke it.
 - Actual Google scopes and account permissions.

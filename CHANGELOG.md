@@ -1,5 +1,11 @@
 # Changelog
 
+## Guided workbench setup — 2026-11-04
+
+- Add materials-first onboarding, permission-aware website discovery and a one-question-at-a-time gap interview with saved progress.
+- Carry focused clarification into interactive analysis, creative and setup guidance; unattended reviews queue missing decisions instead of interviewing.
+- No runtime changes.
+
 ## Workbench consolidation — 2026-11-04
 
 - Distill the starter to nine files: overview/status merge into README, creative-library into asset-inventory, and source-map into decisions.

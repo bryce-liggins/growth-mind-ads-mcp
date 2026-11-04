@@ -21,25 +21,40 @@ Replace the example path and verify the destination does not already exist befor
 
 If you filled in the earlier starter, merge overview and status into README.md, creative-library content into asset-inventory.md, and source-map content into decisions.md. Preserve source IDs, dates, owner edits and substantive sections; resolve conflicts before retiring the old files. Update links and agent inputs to the consolidated locations. Keep any needed historical copy as private source evidence, not a second current rulebook.
 
-## 2. Build from evidence before interviewing
+## 2. Guide the owner through source discovery
 
-Read the owner's existing context, approved brand/product materials and relevant customer research. Inspect representative official pages and published creative when access is authorized. Record what you actually inspected in decisions.md, including dates and limits. Preserve substantive examples, exceptions and product nuances, not just summaries.
+Begin with one easy question: "Do you have brand guidelines, an existing brand workbench or other business materials we can start with?" Skip it if the owner has already answered. Wait for the answer before asking another question.
 
-Route identity to README.md, current offers to offering.md, outcomes and reasoning to goals.md, customer understanding/positioning to brand-foundations.md, creative judgment to taste.md, design rules to visual-system.md and metric definitions to performance.md. Keep live priorities in README.md. Record decisions and conflicts in decisions.md. Keep the asset library, retrieval instructions, review process and individual records together in asset-inventory.md.
+If materials exist, help the owner locate or share them through the available file/link tools, then read them. Reuse an existing workbench and preserve its edits. If no materials exist, or relevant gaps remain, ask: "May I review and scrape your official website to build a first picture of the brand?" Ask for the URL separately if it is unknown. Use permission already given for that scope; don't ask again. If permission is declined or access/tools are unavailable, explain the limitation briefly and continue the interview. A website is helpful, not required.
 
-Fill every file with useful sourced content or a specific gap and next source. Replace template metadata with the brand, actual dates and appropriate review state. A populated template is still a draft until its consequential direction is confirmed. Do not infer the owner's objective from the website or invent an emotional insight because it sounds plausible.
+Within the authorized scope, inspect representative home, product/service, about and conversion pages, relevant published examples and available design evidence. Keep discovery bounded to the business and this workbench. Do not buy a scraping plan, expand to private sources or bypass access controls. Record exactly what was inspected, source dates and access limits in decisions.md. Preserve substantive examples, exceptions and product nuances. Label published claims and inferred brand patterns as observations until their applicability is confirmed.
 
-## 3. Draw out the owner's judgment
+Summarize what you learned in plain language and identify the remaining information gaps. This should orient the owner, not give them a questionnaire to complete. Ask only the next useful question.
 
-Ask one question at a time, using existing answers first. Prioritize the missing decision that changes the next recommendation. Useful questions include:
+## 3. Interview one question at a time and build as you go
 
-- What outcome matters most for this account right now, and what tradeoff are you willing to make for it?
-- Which customers look relevant in a keyword report but are a bad fit for your business, and why?
-- Should this campaign pursue competitor searches, avoid them, or treat particular competitors differently?
-- Show me an ad or page you would approve and one you would reject. What makes the difference?
-- What does a qualified lead mean here, and when do you know whether one became a customer?
+Use existing sources and answers before asking anything. Ask one focused question, wait for the answer, update the appropriate files, then choose the next question from what is still missing. Ask a follow-up when the reasoning, example or scope would materially improve the work. Avoid bundling several questions into one message or marching through a fixed checklist when the answer is already available.
 
-Save the actual answer, reasoning, date and scope. Ask for direction when it is missing; routine drafting can continue within decisions already made. Proposals stay labeled as proposals.
+Use this coverage map internally. Example questions are alternatives to ask individually, not a form to send all at once.
+
+| Information to establish | Example next question | File |
+| --- | --- | --- |
+| Business scope and current situation | Which part of the business should this workbench support first? | README.md |
+| Customer and buying trigger | What usually happens just before your best-fit customer looks for you? | brand-foundations.md |
+| Offering, limitations and demand | Which requests look relevant but are a poor fit for your business? | offering.md |
+| Goals and tradeoffs | What outcome matters most for this account right now? | goals.md |
+| Strategic reasoning | Why is that the priority now? | goals.md, decisions.md |
+| Competitor-demand policy | Should this campaign pursue competitor searches or avoid them? | offering.md, decisions.md |
+| Voice, taste and proof | Can you share one piece of copy you like and explain what works about it? | taste.md |
+| Visual direction and assets | Which existing page or asset best represents the look you want? | visual-system.md, asset-inventory.md |
+| Success definitions and measurement | What makes a lead qualified in your business? | performance.md |
+| Capacity, constraints and responsibilities | What operational limit should shape our recommendations? | goals.md, README.md |
+
+Save the owner's language, reasoning, date and scope. Ask for counterexamples or rejected creative when useful. Keep source records and integration coverage in decisions.md, and live priorities/open loops in README.md. Keep the asset library, retrieval instructions, review process and individual records in asset-inventory.md.
+
+Maintain a compact gap list in README.md: topic, known evidence, missing detail, affected workflow and next question. An owner may answer "I don't know" or defer a topic; record that explicitly and continue useful work. Do not invent a target, brand rule, customer motivation or strategy to make every field look complete. Don't claim all the owner's knowledge has been captured.
+
+Build the nine files as answers arrive. Fill each with useful sourced content or a specific gap. Replace template metadata with the actual brand, dates and review state. Confirm consequential choices in short summaries, especially the goal, success definition, demand policy and constraints. Before the handoff, show the workbench and ask: "What should we correct or add before using this?" Save corrections and remaining gaps. If interrupted, save the interview checkpoint and resume from the next unanswered question without restarting.
 
 ## 4. Check that context changes the recommendation
 
@@ -71,25 +86,35 @@ Record experiment observations in performance.md and changing priorities in READ
 
 ```text
 Build or improve my private brand workbench using this repository's
-examples/brand-workbench/README.md and docs/BRAND_WORKBENCH.md.
-First inspect the business documents and existing workbench I authorize.
-Reuse the existing structure if it covers the same responsibilities.
+examples/brand-workbench/README.md and docs/BRAND_WORKBENCH.md. Guide me through the process one question at a time.
+Wait for my answer before asking the next question. Reuse answers,
+materials and permissions I have already provided.
 
-Preserve customer insight, my strategic choices and why I made them,
-product/offer details and limits, goals, voice examples, visual rules,
-metric definitions, sources and decisions across linked Markdown files.
-Use real examples and source dates. Label confirmed, observed, proposed,
-unknown and conflicting content. Do not invent missing strategy or proof.
-Keep completed business context private and separate from the public repo.
+Start by asking whether I have brand guidelines, an existing workbench
+or other business materials to use. If I do, help me share or locate
+them and read them first. If I don't, or they leave gaps, ask permission
+to review and scrape my official website. Ask for the URL if needed.
+If I decline or you can't access it, continue with my answers.
 
-Show what you found, what is usable and the next missing decision.
-Ask me one question at a time where my judgment is needed.
+Summarize what you've learned and the gaps that remain. Interview me
+one question at a time to fill them. Cover the customer and buying
+situation, offering and limits, goals and tradeoffs, voice and examples,
+visual direction and assets, performance definitions and constraints.
+Ask for my reasoning and real examples when they would clarify a choice.
+Don't ask me to repeat information you already have or send a long form.
+
+Build the linked Markdown files as we go. Preserve my language and
+reasoning, source dates and decisions. Label confirmed facts,
+observations, proposals and unknowns. Don't treat website copy as my
+confirmed strategy. Keep a list of unresolved gaps so we can resume.
+
+Show me the resulting workbench and ask what needs correcting or adding.
 Before account recommendations, confirm the objective, success metric,
-demand policy and constraints for the relevant campaign scope.
-Demonstrate a sample search-term decision and an ad/page brief that cite
-the workbench rules behind them. Do not make account changes.
+demand policy and constraints. Show a sample search-term decision and
+an ad or landing-page brief grounded in the workbench.
+Keep my completed workbench private. Do not make account changes.
 ```
 
 ## Handoff acceptance
 
-Return the private README path, file inventory, source coverage, owner-confirmed direction, remaining questions and dry-run outputs. Report which workflows are ready and which depend on missing context. An incomplete visual library can coexist with a usable search-term workflow. Missing strategic direction holds the affected recommendations. Business context never replaces exact account-change approval.
+Return the private README path, file inventory, source coverage, owner-confirmed direction, remaining questions, interview checkpoint and dry-run outputs. Confirm that the source-discovery path respects existing permission, a no-guidelines owner can proceed, declined/unavailable website access falls back to the interview, and returning owners are not asked to repeat saved answers. Report which workflows are ready and which depend on missing context. An incomplete visual library can coexist with a usable search-term workflow. Missing strategic direction holds the affected recommendations. Business context never replaces exact account-change approval.

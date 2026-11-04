@@ -35,6 +35,9 @@ negative-keyword proposals with exact match type and campaign/shared-list
 scope. Analyze comparable repeated RSA messages using weighted metrics.
 Check the owner's pacing, conversion and destination-health thresholds.
 Account for conversion lag and record missing integrations explicitly.
+If business context is missing, save the question for the owner's next
+interactive session and hold the affected proposal. Do not wait for an
+interview, repeat onboarding or invent the answer during this run.
 
 Save a timestamped receipt and update review-queue.md. Deduplicate by
 customer + resource/scope + action + proposed value. Preserve owner decisions.
