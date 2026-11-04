@@ -64,7 +64,7 @@ Do **not** register `growth-mind-ads`, including its validation tools. A schedul
 
 1. List accessible accounts. Establish the intended target, manager route, timezone and currency; do not assume an old account ID remains accessible.
 2. Run the small reports in [QUERIES.md](QUERIES.md).
-3. Load [the brand workbench](../examples/brand-workbench.md) and [operator instructions](../examples/OPERATOR_INSTRUCTIONS.md).
+3. Load [the brand workbench](../examples/brand-workbench/README.md) and [operator instructions](../examples/OPERATOR_INSTRUCTIONS.md).
 4. For an owner-requested change, follow [OPERATIONS.md](OPERATIONS.md), verify the host approval prompt, and read back the result.
 5. Record client/version, commit, permission configuration, read result and any untested step.
 

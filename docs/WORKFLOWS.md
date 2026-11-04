@@ -1,10 +1,10 @@
 # Workflow recipes
 
-These are instructions for an agent with the appropriate connected tools, not scheduled jobs or integrations automatically installed by this package. Start with the brand workbench. Save findings and proposed actions; retain human judgment.
+These are instructions for an agent with the appropriate connected tools, not scheduled jobs or integrations automatically installed by this package. Start with the [multi-file brand workbench](BRAND_WORKBENCH.md) and its task-specific [reading map](../examples/brand-workbench/README.md#read-only-what-the-job-needs). Save findings and proposed actions; retain human judgment.
 
 ## Search-term mining
 
-Input: account/campaign scope, date range, current negatives, offering and demand policy.
+Input: account/campaign scope, date range, current negatives, offering.md demand policy, goals.md priorities, brand-foundations.md customer context, performance.md definitions and applicable decisions.md entries.
 
 Ask the reporting connector for all available rows/pages. Classify intent and flag business mismatches; distinguish low-volume uncertainty from obvious irrelevance. Output query, metrics, classification, reason, proposed negative/match/scope, conflicts and demand at risk. Do not automatically exclude competitor demand unless the workbench supports it. Review twice daily only if that is the owner's chosen cadence.
 
@@ -18,11 +18,11 @@ Group identical messages in comparable contexts, deduplicate rows and preserve o
 
 Fictional arithmetic check: 100 impressions/10 clicks/$20/2 conversions plus 300 impressions/15 clicks/$30/1 conversion gives 400 impressions, 25 clicks, $50, 3 conversions, 6.25% CTR and $16.67 CPA. Zero conversions means undefined CPA. These are directional observations; assets appear together. [Google asset reporting](https://support.google.com/google-ads/answer/9564897?hl=en).
 
-Output: message review table, evidence limits and a proposed test. The operator writes/reviews the challenger.
+Load goals.md and performance.md for interpretation; use offering.md, brand-foundations.md and taste.md for the challenger. Output: message review table, evidence limits and a proposed test linked to the owner's direction and creative examples. The operator writes/reviews the challenger.
 
 ## Landing-page production
 
-Input: intent, proposed ad, offer, brand workbench, repository and hosting project.
+Input: intent, proposed ad, offering.md, goals.md, brand-foundations.md, taste.md, visual-system.md, creative-library.md, asset-inventory.md, performance.md measurement requirements, repository and hosting project. Read current status and applicable decisions. Link selected proof, approved assets and the owner's strategic direction in the page brief.
 
 Prepare a matching page, mobile behavior, crawlability, semantic/accessibility markup, performance and conversion path. Include behavior capture, completed-conversion tracking and permitted attribution. Respect consent and targeted sensitive-data protections. Test the completed action and its real destination within authorized scope. A build pass alone isn't conversion evidence. Release requires the owner's deployment authority.
 

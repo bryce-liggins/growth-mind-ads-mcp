@@ -1,5 +1,11 @@
 # Changelog
 
+## Documentation update — 2026-11-04
+
+- Expand the brand workbench into a 13-file private starter with source mapping, owner reasoning, taste, visual guidance, performance and asset records.
+- Add a build/maintenance guide, contextual dry runs and task-specific agent/scheduler loading instructions.
+- Preserve the former single-file URL as a pointer. No runtime changes.
+
 ## 0.2.0 — 2026-11-03
 
 - Add sanitized attempt/failure auditing and fail closed when the initial audit record cannot be written.

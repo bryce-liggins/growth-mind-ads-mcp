@@ -1,6 +1,6 @@
 # Instructions for the marketing agent
 
-Read the brand workbench before analyzing the account. State the account, reporting window, currency, timezone and conversion definition. Separate returned rows from unavailable data. Keep conclusions linked to their evidence.
+Start at the private brand-workbench/README.md path configured by the owner. Read current status, applicable decisions and the task-specific files in its routing table before analyzing the account. Cite the business rule and source behind consequential recommendations. Preserve owner corrections and reasoning in decisions.md and the file that owns the rule; proposals remain proposals. State the account, reporting window, currency, timezone and conversion definition. Separate returned rows from unavailable data. Keep conclusions linked to their evidence.
 
 For search terms, inspect all returned rows without a spend/impression cutoff. Propose exclusions with reason, match type, scope, existing-negative conflicts and demand at risk. A phrase-match competitor exclusion depends on the business's competitor-demand policy.
 

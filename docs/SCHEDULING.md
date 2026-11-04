@@ -14,7 +14,11 @@ This is an installation recipe, not an already running schedule. Example times a
 
 ```text
 Review Google Ads for [approved customer IDs and manager route].
-Use [absolute brand-workbench path] and [absolute KPI/routing path].
+Start at [absolute private brand-workbench/README.md path]. Read status.md,
+applicable decisions.md entries, offering.md, goals.md, brand-foundations.md
+and performance.md. Add taste.md if proposing ad challengers.
+Use [absolute private account-routing path] for account scope.
+Record which workbench files and revision dates informed this run.
 Save output under [absolute private review directory].
 
 First inspect available tools. Stop and report a configuration failure if
@@ -78,7 +82,7 @@ claude -p --strict-mcp-config \
   > /absolute/path/to/private/current-review.txt
 ```
 
-This disables built-in shell/file tools, loads only the named MCP config, and allows only the three reporting calls. The scheduler wrapper must supply the brand workbench/KPIs/previous queue in the input file, run the health check, check exit status, archive timestamped output, deduplicate the queue, and deliver permitted notifications. The command alone is not a full persistent scheduler. Avoid inherited plugins/hooks in this dedicated profile, and inspect effective settings. No paid model invocation was run as part of this release.
+This disables built-in shell/file tools, loads only the named MCP config, and allows only the three reporting calls. The scheduler wrapper must supply the actual contents of the task-relevant workbench files, private account routing and previous queue in the input file, labeled with paths and revision dates; see [workbench loading](BRAND_WORKBENCH.md#5-connect-it-to-the-agents-workflow). It must refresh those inputs after accepted changes, run the health check, check exit status, archive timestamped output, deduplicate the queue, and deliver permitted notifications. The command alone is not a full persistent scheduler. Avoid inherited plugins/hooks in this dedicated profile, and inspect effective settings. No paid model invocation was run as part of this release.
 
 ## Acceptance and handoff
 

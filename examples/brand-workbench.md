@@ -1,22 +1,5 @@
-# Brand workbench template
+# Brand workbench starter
 
-Complete with the owner before account analysis. Unknown is an acceptable value; invented strategy is not.
+The starter now spans 13 Markdown files. Copy the [brand-workbench folder](brand-workbench/README.md) into a private workspace and follow the [build guide](../docs/BRAND_WORKBENCH.md).
 
-- Customer and buying situation:
-- Offering and service area:
-- Reasons to choose this business:
-- Voice and personality, with examples:
-- Primary campaign objective:
-- Success metric and definition:
-- Secondary metrics:
-- Budget and operational constraints:
-- Wanted/unwanted demand:
-- Competitor-demand policy:
-- Substantiated offers and claims:
-- Qualified-lead and customer definitions:
-- Decision-maker:
-- Open questions:
-- Owner review date:
-
-Record the reasoning behind an objective. Profitability, volume, awareness and reach imply different recommendations.
-
+The folder separates business context, goals, customer insight, taste, visual rules, performance, assets, sources and decisions. This page remains so older playbook links continue to work.
