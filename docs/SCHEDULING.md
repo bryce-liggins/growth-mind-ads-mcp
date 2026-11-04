@@ -14,7 +14,7 @@ This is an installation recipe, not an already running schedule. Example times a
 
 ```text
 Review Google Ads for [approved customer IDs and manager route].
-Start at [absolute private brand-workbench/README.md path]. Read status.md,
+Start at [absolute private brand-workbench/README.md path]. Review its current operating status, then read
 applicable decisions.md entries, offering.md, goals.md, brand-foundations.md
 and performance.md. Add taste.md if proposing ad challengers.
 Use [absolute private account-routing path] for account scope.

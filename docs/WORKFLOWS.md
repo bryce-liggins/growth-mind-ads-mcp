@@ -22,7 +22,7 @@ Load goals.md and performance.md for interpretation; use offering.md, brand-foun
 
 ## Landing-page production
 
-Input: intent, proposed ad, offering.md, goals.md, brand-foundations.md, taste.md, visual-system.md, creative-library.md, asset-inventory.md, performance.md measurement requirements, repository and hosting project. Read current status and applicable decisions. Link selected proof, approved assets and the owner's strategic direction in the page brief.
+Input: intent, proposed ad, offering.md, goals.md, brand-foundations.md, taste.md, visual-system.md, asset-inventory.md, performance.md measurement requirements, repository and hosting project. Read current status and applicable decisions. Link selected proof, approved assets and the owner's strategic direction in the page brief.
 
 Prepare a matching page, mobile behavior, crawlability, semantic/accessibility markup, performance and conversion path. Include behavior capture, completed-conversion tracking and permitted attribution. Respect consent and targeted sensitive-data protections. Test the completed action and its real destination within authorized scope. A build pass alone isn't conversion evidence. Release requires the owner's deployment authority.
 

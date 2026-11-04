@@ -14,42 +14,69 @@ Start with the [build and maintenance guide](../../docs/BRAND_WORKBENCH.md). Reu
 
 ## Workspace record
 
-- Brand and business owner: [name, role]
 - Canonical private location: [path]
 - Decision owner and approval scope: [who decides strategy, claims and releases]
 - Baseline built / last owner review: [dates or unknown]
 - Current usable scope: [e.g. search-term classification; copy awaiting voice review]
 - Important gaps and next decision: [specific question and owner]
-- Creative asset home: [authorized private library link; verification date]
-- Private account routing: [connections record path; no credentials]
+- Creative asset home: [link to asset-inventory.md; verification date]
+
+## Identity and scope
+- Brand, legal/operator identity and official website: [source]
+- Products, brands, markets and locations covered by this workbench: [scope]
+- Relationship and engagement scope: [confirmed responsibilities; excluded work]
+- Business owner, marketer and decision-makers: [roles]
+- Related project and private connection records: [links]
+
+## Authority map
+| Topic | Current source / owner | Version and scope | State | Conflict / next check |
+| --- | --- | --- | --- | --- |
+| Commercial terms | [responsible source] | [date/market] | unknown | [verify] |
+| Strategy | [owner decision] | [campaign/timeframe] | unknown | [ask] |
+| Voice/design | [approved guideline] | [brand/channel] | unknown | [inspect] |
+
+Link deeper evidence from decisions.md. Keep account identifiers in the private connections record. A saved connection name doesn't prove working access.
+
+## Current operating status
+
+- As of / last verified: [date]
+- Current owner priorities: [source and scope]
+- Active campaigns / tests / projects: [private links]
+- Recent business changes: [availability, capacity, service areas, offers]
+- Usable access: [connection, last successful verification; never secret values]
+- Reported but unverified changes: [source and next check]
+
+## Open loops
+| Item | Affected work | Owner | Next action / due date | State / evidence |
+| --- | --- | --- | --- | --- |
+| [gap] | [specific dependency] | [person] | [action] | [state] |
+
+Link review queues, experiments and setup progress in their durable private homes. Keep current priorities here; permanent strategy belongs in goals/foundations and decisions. Do not infer completion or approval from a quiet inbox.
 
 ## Current guidance
 
 | File | Owns | Used for |
 | --- | --- | --- |
-| [overview.md](overview.md) | Identity, scope, people and authority | Correct business and account context |
+| [README.md](README.md) | Identity, scope, authority, current priorities, access and open loops | Start here and find the context for each task |
 | [offering.md](offering.md) | Current services/products, terms, limits and demand policy | Relevant queries, exclusions and accurate promises |
 | [goals.md](goals.md) | Owner-selected outcomes, priorities, constraints and reasoning | Choosing what to optimize |
 | [brand-foundations.md](brand-foundations.md) | Customer situations, jobs, positioning, differentiation and proof | Understanding why customers buy |
 | [taste.md](taste.md) | Customer nuance, voice, POV and approved/rejected examples with reasons | Writing and reviewing ads and pages |
 | [visual-system.md](visual-system.md) | Implementable design rules and source evidence | Building pages and graphics |
 | [performance.md](performance.md) | Metric definitions, baselines, measurement gaps and experiment results | Interpreting performance accurately |
-| [status.md](status.md) | Current priorities, operating changes, access evidence and open loops | Keeping the next review current |
-| [decisions.md](decisions.md) | Choices, rationale, conflicts, corrections and superseded guidance | Preserving human judgment |
-| [source-map.md](source-map.md) | Evidence, dates, coverage and limitations | Tracing facts and rules to their sources |
-| [creative-library.md](creative-library.md) | Asset storage, retrieval and review process | Finding the right creative files |
-| [asset-inventory.md](asset-inventory.md) | Individual assets, variants, approval and usage rights | Using approved assets correctly |
+| [decisions.md](decisions.md) | Choices, rationale, corrections, source evidence, dates and coverage | Preserve human judgment and trace guidance to its sources |
+| [asset-inventory.md](asset-inventory.md) | Asset home, retrieval, review process, individual assets and usage rights | Find and use the right creative files |
 
 ## Read only what the job needs
 
-Start each session here, then read current priorities in status.md and applicable decisions in decisions.md. Follow links to relevant source evidence when a claim needs verification.
+Start each session here, review the current operating status above, then read applicable decisions and source evidence in decisions.md. Follow links to relevant source evidence when a claim needs verification.
 
 | Work | Additional files |
 | --- | --- |
-| Search-term review / negative proposals | overview.md, offering.md, goals.md, brand-foundations.md, performance.md |
+| Search-term review / negative proposals | offering.md, goals.md, brand-foundations.md, performance.md |
 | RSA analysis | goals.md, performance.md, offering.md; add foundations and taste when proposing a challenger |
 | Ad writing | brand-foundations.md, offering.md, goals.md, taste.md, relevant performance evidence |
-| Landing-page production | All ad-writing inputs plus visual-system.md, creative-library.md, asset-inventory.md and measurement requirements in performance.md |
+| Landing-page production | All ad-writing inputs plus visual-system.md, asset-inventory.md and measurement requirements in performance.md |
 | Budget / lead-quality review | goals.md, offering.md, performance.md and verified private account/CRM routing |
 
 ## Evidence and authority

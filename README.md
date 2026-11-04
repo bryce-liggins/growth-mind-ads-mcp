@@ -8,7 +8,7 @@ Manage supported Google Ads changes from an AI agent through a local MCP server.
 
 - **Installing with an agent?** Give it [docs/AGENT_SETUP.md](docs/AGENT_SETUP.md).
 - **Installing yourself?** Follow [installation](docs/INSTALLATION.md), [Google access](docs/GOOGLE_SETUP.md), then [Codex/Claude configuration](docs/CLIENTS.md).
-- **Building the business context?** Follow [the brand workbench guide](docs/BRAND_WORKBENCH.md) and [13-file Markdown starter](examples/brand-workbench/README.md).
+- **Building the business context?** Follow [the brand workbench guide](docs/BRAND_WORKBENCH.md) and [9-file Markdown starter](examples/brand-workbench/README.md).
 - **Using the tools?** Read [the exact change protocol](docs/OPERATIONS.md) and [workflow recipes](docs/WORKFLOWS.md).
 - **Writing application documents?** Use [the privacy and app-description worksheet](docs/PRIVACY.md).
 - **Checking the trust boundary?** Read [SECURITY.md](SECURITY.md) before allowing writes.

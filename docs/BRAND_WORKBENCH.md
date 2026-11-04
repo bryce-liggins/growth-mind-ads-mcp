@@ -2,7 +2,7 @@
 
 A brand workbench gives the agent the business understanding it needs to make useful recommendations. It preserves the customer's situation, the owner's strategic choices and reasoning, product reality, creative judgment and evidence across linked Markdown files.
 
-The [13-file starter](../examples/brand-workbench/README.md) follows Growth Mind's workbench structure. It is a reusable template, not a copy of private client context. The bridge does not automatically discover or load it: your agent instructions must point to the private workbench's README.
+The [9-file starter](../examples/brand-workbench/README.md) distills Growth Mind's workbench structure for this playbook. It is a reusable template, not a copy of private client context. The bridge does not automatically discover or load it: your agent instructions must point to the private workbench's README.
 
 ## 1. Reuse or create the private workspace
 
@@ -17,11 +17,15 @@ cp -R examples/brand-workbench /absolute/path/to/private-business-workspace/bran
 
 Replace the example path and verify the destination does not already exist before copying. Keep completed files outside a public clone/fork. Use separate workbenches for distinct brands; the same company may have multiple customers, offers and voices.
 
+### Consolidating an existing starter
+
+If you filled in the earlier starter, merge overview and status into README.md, creative-library content into asset-inventory.md, and source-map content into decisions.md. Preserve source IDs, dates, owner edits and substantive sections; resolve conflicts before retiring the old files. Update links and agent inputs to the consolidated locations. Keep any needed historical copy as private source evidence, not a second current rulebook.
+
 ## 2. Build from evidence before interviewing
 
-Read the owner's existing context, approved brand/product materials and relevant customer research. Inspect representative official pages and published creative when access is authorized. Record what you actually inspected in source-map.md, including dates and limits. Preserve substantive examples, exceptions and product nuances, not just summaries.
+Read the owner's existing context, approved brand/product materials and relevant customer research. Inspect representative official pages and published creative when access is authorized. Record what you actually inspected in decisions.md, including dates and limits. Preserve substantive examples, exceptions and product nuances, not just summaries.
 
-Route identity to overview.md, current offers to offering.md, outcomes and reasoning to goals.md, customer understanding/positioning to brand-foundations.md, creative judgment to taste.md, design rules to visual-system.md and metric definitions to performance.md. Keep live priorities in status.md. Record decisions and conflicts in decisions.md. Document the asset library and individual assets separately.
+Route identity to README.md, current offers to offering.md, outcomes and reasoning to goals.md, customer understanding/positioning to brand-foundations.md, creative judgment to taste.md, design rules to visual-system.md and metric definitions to performance.md. Keep live priorities in README.md. Record decisions and conflicts in decisions.md. Keep the asset library, retrieval instructions, review process and individual records together in asset-inventory.md.
 
 Fill every file with useful sourced content or a specific gap and next source. Replace template metadata with the brand, actual dates and appropriate review state. A populated template is still a draft until its consequential direction is confirmed. Do not infer the owner's objective from the website or invent an emotional insight because it sounds plausible.
 
@@ -61,7 +65,7 @@ For shell-restricted/headless sessions that cannot read local files, the schedul
 
 When an owner corrects a recommendation, capture the correction and why in decisions.md. Update the file that owns the rule, link the decision/source and preserve the previous rule as dated history. Refresh source coverage and affected workflow inputs. Do not turn a campaign-specific decision into a universal policy.
 
-Record experiment observations in performance.md and changing priorities in status.md. Results can support a proposed strategy or creative change; a winning ad alone doesn't rewrite brand rules. Resolve conflicting guidelines explicitly, preserving the evidence on both sides. Continue unaffected work while the owner settles the material choice.
+Record experiment observations in performance.md and changing priorities in README.md. Results can support a proposed strategy or creative change; a winning ad alone doesn't rewrite brand rules. Resolve conflicting guidelines explicitly, preserving the evidence on both sides. Continue unaffected work while the owner settles the material choice.
 
 ## Agent prompt
 

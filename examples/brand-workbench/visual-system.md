@@ -9,7 +9,7 @@ visibility: internal-when-completed
 # Visual system
 
 ## Current visual authority
-[Approved design guide/version, inspected implementation and any conflicts. Link source-map.md and decisions.md.]
+[Approved design guide/version, inspected implementation and any conflicts. Link the source evidence and decision records in decisions.md.]
 
 | Element | Executable rule | Source / evidence state | Exceptions / gaps |
 | --- | --- | --- | --- |

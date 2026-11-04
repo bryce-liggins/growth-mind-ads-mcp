@@ -1,5 +1,11 @@
 # Changelog
 
+## Workbench consolidation — 2026-11-04
+
+- Distill the starter to nine files: overview/status merge into README, creative-library into asset-inventory, and source-map into decisions.
+- Preserve identity, current priorities, asset retrieval/review instructions, source dates, integration coverage and evidence gaps in the surviving templates.
+- Keep offering and goals separate; update agent routing and migration instructions. No runtime changes.
+
 ## Documentation update — 2026-11-04
 
 - Expand the brand workbench into a 13-file private starter with source mapping, owner reasoning, taste, visual guidance, performance and asset records.
